@@ -1,0 +1,17 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": "**/*.md",
+      "options": {
+        "printWidth": 80
+      }
+    }
+  ]
+}
