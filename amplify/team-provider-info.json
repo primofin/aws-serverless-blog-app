@@ -13,7 +13,14 @@
     },
     "categories": {
       "auth": {
-        "amplify186a990e": {}
+        "amplify186a990e": {},
+        "true": {}
+      },
+      "function": {
+        "S3Trigger6756fe9d": {
+          "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
+          "s3Key": "amplify-builds/S3Trigger6756fe9d-4c64774c706b75396869-build.zip"
+        }
       }
     }
   }
