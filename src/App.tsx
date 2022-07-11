@@ -1,24 +1,18 @@
-import { Amplify } from 'aws-amplify';
 import { Routes, Route } from 'react-router-dom';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
 
-import awsExports from './aws-exports';
-import { About, TestingPage } from './pages/TestingPage';
+import TestingPage from './pages/TestingPage';
+import About from './pages/About';
 
-Amplify.configure(awsExports);
-
-function App({ signOut, user }: any) {
+function App() {
   return (
     <>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
+      <h1>Hello</h1>
       <Routes>
-        <Route path="/" element={<TestingPage />} />
-        <Route path="about" element={<About />} />
+        <Route path="/testing" element={<TestingPage />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
