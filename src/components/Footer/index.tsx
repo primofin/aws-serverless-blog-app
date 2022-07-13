@@ -1,7 +1,7 @@
 import './footer.scss';
 
 const Footer = () => {
-  return <div></div>;
+  return <div>Made with love by PrimoFin</div>;
 };
 
 export default Footer;
