@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.42",
-    "@types/react": "^18.0.14",
+    "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.5",
     "aws-amplify": "^4.3.26",
     "aws-amplify-react": "^5.1.9",
