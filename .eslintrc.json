@@ -32,19 +32,6 @@
       {
         "argsIgnorePattern": "^_"
       }
-    ],
-    "import/no-unresolved": [2, { "caseSensitive": false }],
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "caseInsensitive": false,
-          "order": "asc"
-        },
-        "groups": ["external", "builtin", ["internal", "parent", "sibling", "index"]],
-        "newlines-between": "always",
-        "warnOnUnassignedImports": true
-      }
     ]
   }
 }
