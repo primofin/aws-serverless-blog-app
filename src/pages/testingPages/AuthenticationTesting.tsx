@@ -3,11 +3,11 @@ import { Amplify } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 
-import awsExports from '../aws-exports';
+import awsExports from '../../aws-exports';
 
 Amplify.configure(awsExports);
 
-function TestingPage() {
+function AuthenticationTesting() {
   return (
     <>
       <main>
@@ -21,4 +21,4 @@ function TestingPage() {
   );
 }
 
-export default withAuthenticator(TestingPage);
+export default withAuthenticator(AuthenticationTesting);
