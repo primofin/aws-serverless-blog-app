@@ -1,0 +1,56 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+section {
+  padding: 4rem 100px;
+
+  &.jumbotron {
+    text-align: left;
+    background-color: $brand-color;
+
+    h1 {
+      margin-top: 4rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+header,
+main {
+  width: 100vw;
+}
+
+header {
+  transition: background-color 0.3s ease;
+  background-color: $brand-color;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+
+  nav {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $text-color;
+    li {
+      display: inline;
+      top: 50%;
+      padding-right: 2rem;
+
+      a {
+        color: $text-color;
+      }
+    }
+  }
+
+  &.inverted {
+    background-color: #fff;
+    box-shadow: 0 3px 5px 0.3px rgba(0, 0, 0, 0.1);
+
+    nav {
+      border-bottom: none;
+    }
+  }
+}

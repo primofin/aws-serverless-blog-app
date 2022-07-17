@@ -1,5 +1,3 @@
-import './footer.scss';
-
 const Footer = () => {
   return <div>Made with love by PrimoFin</div>;
 };
