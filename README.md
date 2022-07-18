@@ -34,3 +34,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Sass Boilerplate
 The Sass boilderplate used in the project comes from https://github.com/KittyGiraudel/sass-boilerplate
 
+## Naming Convention
+
+[BEM methodology](https://en.bem.info/methodology/naming-convention/)
+
