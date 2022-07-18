@@ -1,4 +1,4 @@
-import CrayonCard from '../components/CrayonCard';
+import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <Header />
-      <CrayonCard></CrayonCard>
+      <BlogCard></BlogCard>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt tenetur accusantium,
         ullam quam dolor cum accusamus officia obcaecati et fuga nobis iste molestiae autem optio
