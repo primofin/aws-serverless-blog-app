@@ -22,6 +22,9 @@ const Header = () => {
             <li>
               <a href="#">Log in</a>
             </li>
+            <li>
+              <a href="#">Create account</a>
+            </li>
           </ul>
         </nav>
       </header>

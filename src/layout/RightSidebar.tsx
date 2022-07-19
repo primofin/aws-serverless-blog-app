@@ -4,12 +4,11 @@ const RightSidebar = () => {
       <h4>DISCOVER MORE OF WHAT MATTERS TO YOU</h4>
       <div>
         <ul>
-          <li>
-            <a href="/">Javascript</a>
-          </li>
-          <li>
-            <a href="/">Programming</a>
-          </li>
+          {[1, 2, 3, 4].map((key) => (
+            <li className="right-sidebar__tag" key={key}>
+              <a href="/">Javascript</a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

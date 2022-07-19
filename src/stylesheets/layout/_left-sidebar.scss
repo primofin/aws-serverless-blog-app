@@ -1,0 +1,12 @@
+.left-nav {
+  &__item {
+    display: flex;
+    a {
+      color: $text-color;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

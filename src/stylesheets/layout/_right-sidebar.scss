@@ -1,0 +1,8 @@
+.right-sidebar {
+  &__tag {
+    display: flex;
+    a {
+      color: $text-color;
+    }
+  }
+}
