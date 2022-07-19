@@ -1,16 +1,16 @@
-import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import LeftSidebar from '../components/LeftSidebar';
+import Newsfeed from '../components/Newsfeed';
 import RightSidebar from '../components/RightSidebar';
 
 function Home() {
   return (
     <div>
       <Header />
-      <div className="content-wrapper">
+      <div className="home-content">
         <LeftSidebar></LeftSidebar>
-        <BlogCard></BlogCard>
+        <Newsfeed></Newsfeed>
         <RightSidebar></RightSidebar>
       </div>
       <div>

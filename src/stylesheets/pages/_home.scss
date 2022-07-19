@@ -2,7 +2,9 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 
-.content-wrapper {
+.home-content {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 2rem;
+  margin: 2rem 4rem;
 }

@@ -1,0 +1,17 @@
+.article {
+  background-color: #ffffff;
+  border-radius: 4px;
+  max-height: 600px;
+  max-width: 520px;
+
+  &__cover {
+    img {
+      height: 180px;
+      width: 100%;
+    }
+  }
+
+  &__body {
+    margin: 1rem;
+  }
+}
