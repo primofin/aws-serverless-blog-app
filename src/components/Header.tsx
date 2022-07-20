@@ -1,4 +1,5 @@
 import AppLogo from '../assets/app_logo.png';
+import ButtonLink from './ButtonLink';
 
 const Header = () => {
   const className = 'inverted';
@@ -23,7 +24,7 @@ const Header = () => {
               <a href="#">Log in</a>
             </li>
             <li>
-              <a href="#">Create account</a>
+              <ButtonLink link="#" text="Create account"></ButtonLink>
             </li>
           </ul>
         </nav>

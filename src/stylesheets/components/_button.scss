@@ -1,4 +1,23 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
- 
+.button-link {
+  padding: 0.6rem 1rem;
+  border: 1px solid $dark-grey;
+  border-radius: $radius;
+
+  &:hover {
+    background-color: $text-color;
+    color: white;
+  }
+}
+
+.button {
+  padding: 0.6rem 1rem;
+  border-radius: $radius;
+  background-color: $dark-grey;
+  &__secondary {
+   border: 1px solid $dark-grey;
+   background-color: white;
+  }
+}
