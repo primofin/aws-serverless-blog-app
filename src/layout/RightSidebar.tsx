@@ -1,14 +1,20 @@
+import ButtonLink from '../components/ButtonLink';
+
 const RightSidebar = () => {
   return (
     <div>
       <h4>DISCOVER MORE OF WHAT MATTERS TO YOU</h4>
       <div>
-        <ul>
-          {[1, 2, 3, 4].map((key) => (
-            <li className="right-sidebar__tag" key={key}>
-              <a href="/">Javascript</a>
-            </li>
-          ))}
+        <ul className="right-sidebar__tag-list">
+          <li className="right-sidebar__tag">
+            <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
+          </li>
+          <li className="right-sidebar__tag">
+            <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
+          </li>
+          <li className="right-sidebar__tag">
+            <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
+          </li>
         </ul>
       </div>
     </div>

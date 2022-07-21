@@ -1,6 +1,11 @@
 import Button from './Button';
 import HeadingLink from './HeadingLink';
 
+// type ArticleProps = {
+//   imgSrc: string;
+//   link: string;
+// }
+
 const Article = () => {
   return (
     <div className="article">

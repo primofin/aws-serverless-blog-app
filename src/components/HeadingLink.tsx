@@ -1,9 +1,9 @@
-type HeadingLink = {
+type HeadingLinkProps = {
   text: string;
   link: string;
 };
 
-const HeadingLink = ({ text, link }: HeadingLink) => {
+const HeadingLink = ({ text, link }: HeadingLinkProps) => {
   return (
     <a href={link} className="heading-link">
       {text}

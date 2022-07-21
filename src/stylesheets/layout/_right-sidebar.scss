@@ -1,8 +1,11 @@
 .right-sidebar {
+  &__tag-list {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
   &__tag {
     display: flex;
-    a {
-      color: $text-color;
-    }
   }
 }
