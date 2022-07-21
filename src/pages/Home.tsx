@@ -1,4 +1,3 @@
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Newsfeed from '../components/Newsfeed';
 import RightSidebar from '../layout/RightSidebar';
@@ -13,7 +12,6 @@ function Home() {
         <Newsfeed></Newsfeed>
         <RightSidebar></RightSidebar>
       </div>
-      <Footer />
     </div>
   );
 }

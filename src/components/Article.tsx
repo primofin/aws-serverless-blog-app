@@ -1,3 +1,6 @@
+import Button from './Button';
+import HeadingLink from './HeadingLink';
+
 const Article = () => {
   return (
     <div className="article">
@@ -7,12 +10,20 @@ const Article = () => {
         </a>
       </div>
       <div className="article__body">
-        <div className="blog-card__top"></div>
-        <h4>How to store and update arrays in React useState hook</h4>
+        <div className="article__top"></div>
+        <HeadingLink
+          link="#"
+          text="How to store and update arrays in React useState hook"
+        ></HeadingLink>
         <div className="tags">
           <a href="/">
             <span>#</span> react
           </a>
+        </div>
+        <div className="article__bottom">
+          <div className="article__save">
+            <Button text="Save"></Button>
+          </div>
         </div>
       </div>
     </div>

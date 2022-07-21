@@ -14,4 +14,9 @@
   &__body {
     margin: 1rem;
   }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

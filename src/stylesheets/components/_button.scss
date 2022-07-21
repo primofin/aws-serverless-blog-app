@@ -1,6 +1,9 @@
 // -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
+// This file contains all styles related to the button/link components.
 // -----------------------------------------------------------------------------
+
+/* ButtonLink
+   ========================================================================== */
 .button-link {
   padding: 0.6rem 1rem;
   border: 1px solid $dark-grey;
@@ -12,12 +15,29 @@
   }
 }
 
+/* Button
+   ========================================================================== */
 .button {
   padding: 0.6rem 1rem;
+  border: none;
   border-radius: $radius;
-  background-color: $dark-grey;
-  &__secondary {
-   border: 1px solid $dark-grey;
-   background-color: white;
+  background-color: $light-grey;
+
+  &:hover {
+    background-color: $dark-grey;
+    color: white;
   }
+
+  &__secondary {
+    border: 1px solid $dark-grey;
+    background-color: white;
+  }
+}
+
+/* HeadingLink
+   ========================================================================== */
+.heading-link {
+  font-weight: bold;
+  font-size: 1em;
+  margin: 1rem 0;
 }
