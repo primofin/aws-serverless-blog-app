@@ -1,5 +1,6 @@
-import { DraftEditorCommand, EditorState, RichUtils, Editor } from 'draft-js';
+import { DraftEditorCommand, EditorState, RichUtils, Editor, DraftBlockType } from 'draft-js';
 import { useState } from 'react';
+import BlockStyleToolbar, { getBlockStyle } from './blockStyles/BlockStyleToolbar';
 
 const CustomEditor = () => {
   const [state, setState] = useState({
@@ -31,6 +32,14 @@ const CustomEditor = () => {
     onChange(RichUtils.toggleInlineStyle(state.editorState, 'ITALIC'));
   };
 
+  const onStrikeThroughClick = () => {
+    onChange(RichUtils.toggleInlineStyle(state.editorState, 'STRIKETHROUGH'));
+  };
+
+  const toggleBlockType = (blockType: DraftBlockType) => {
+    onChange(RichUtils.toggleBlockType(state.editorState, blockType));
+  };
+
   return (
     <div className="editorContainer">
       <button onClick={onUnderlineClick}>U</button>
@@ -40,8 +49,11 @@ const CustomEditor = () => {
       <button onClick={onItalicClick}>
         <em>I</em>
       </button>
+      <button onClick={onStrikeThroughClick}>abc</button>
+      <BlockStyleToolbar editorState={state.editorState} onToggle={toggleBlockType} />
       <div className="editors">
         <Editor
+          blockStyleFn={getBlockStyle}
           editorState={state.editorState}
           handleKeyCommand={handleKeyCommand}
           onChange={onChange}
