@@ -1,62 +1,184 @@
-import { DraftEditorCommand, EditorState, RichUtils, Editor, DraftBlockType } from 'draft-js';
 import { useState } from 'react';
-import BlockStyleToolbar, { getBlockStyle } from './blockStyles/BlockStyleToolbar';
+import { Editor, EditorState, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
+
+function keyBindingFunction(event: React.KeyboardEvent<HTMLElement>): string | null {
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 'x') {
+    return 'strikethrough';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '7') {
+    return 'ordered-list';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '8') {
+    return 'unordered-list';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '9') {
+    return 'blockquote';
+  }
+
+  return getDefaultKeyBinding(event);
+}
 
 const CustomEditor = () => {
   const [state, setState] = useState({
     editorState: EditorState.createEmpty(),
   });
-
-  const handleKeyCommand = (command: DraftEditorCommand) => {
-    const newState = RichUtils.handleKeyCommand(state.editorState, command);
-    if (newState) {
-      onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  };
-
   const onChange = (editorState: EditorState) => {
     setState({ editorState });
   };
 
-  const onUnderlineClick = () => {
-    onChange(RichUtils.toggleInlineStyle(state.editorState, 'UNDERLINE'));
+  const handleKeyCommand = (command: string) => {
+    // inline formatting key commands handles bold, italic, code, underline
+    const editorState = RichUtils.handleKeyCommand(state.editorState, command);
+
+    // if (!editorState && command === 'strikethrough') {
+    //   editorState = RichUtils.toggleInlineStyle(this.state.editorState, 'STRIKETHROUGH');
+    // }
+
+    // if (!editorState && command === 'blockquote') {
+    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'blockquote');
+    // }
+
+    // if (!editorState && command === 'ordered-list') {
+    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'ordered-list-item');
+    // }
+
+    // if (!editorState && command === 'unordered-list') {
+    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'unordered-list-item');
+    // }
+
+    if (editorState) {
+      setState({ editorState });
+      return 'handled';
+    }
+
+    return 'not-handled';
   };
 
-  const onBoldClick = () => {
-    onChange(RichUtils.toggleInlineStyle(state.editorState, 'BOLD'));
+  const toggleInlineStyle = (event: React.MouseEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    const style = event.currentTarget.getAttribute('data-style');
+    setState({
+      editorState: RichUtils.toggleInlineStyle(state.editorState, style!),
+    });
   };
 
-  const onItalicClick = () => {
-    onChange(RichUtils.toggleInlineStyle(state.editorState, 'ITALIC'));
+  const toggleBlockType = (event: React.MouseEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    const block = event.currentTarget.getAttribute('data-block');
+    setState({
+      editorState: RichUtils.toggleBlockType(state.editorState, block!),
+    });
   };
 
-  const onStrikeThroughClick = () => {
-    onChange(RichUtils.toggleInlineStyle(state.editorState, 'STRIKETHROUGH'));
+  const renderBlockButton = (value: string, block: string) => {
+    return (
+      <input
+        type="button"
+        key={block}
+        value={value}
+        data-block={block}
+        onMouseDown={toggleBlockType}
+      />
+    );
   };
 
-  const toggleBlockType = (blockType: DraftBlockType) => {
-    onChange(RichUtils.toggleBlockType(state.editorState, blockType));
+  const renderInlineStyleButton = (value: string, style: string) => {
+    return (
+      <input
+        type="button"
+        key={style}
+        value={value}
+        data-style={style}
+        onMouseDown={toggleInlineStyle}
+      />
+    );
   };
+
+  const inlineStyleButtons = [
+    {
+      value: 'Bold',
+      style: 'BOLD',
+    },
+
+    {
+      value: 'Italic',
+      style: 'ITALIC',
+    },
+
+    {
+      value: 'Underline',
+      style: 'UNDERLINE',
+    },
+
+    {
+      value: 'Strikethrough',
+      style: 'STRIKETHROUGH',
+    },
+
+    {
+      value: 'Code',
+      style: 'CODE',
+    },
+  ];
+
+  const blockTypeButtons = [
+    {
+      value: 'Heading One',
+      block: 'header-one',
+    },
+
+    {
+      value: 'Heading Two',
+      block: 'header-two',
+    },
+
+    {
+      value: 'Heading Three',
+      block: 'header-three',
+    },
+
+    {
+      value: 'Blockquote',
+      block: 'blockquote',
+    },
+
+    {
+      value: 'Unordered List',
+      block: 'unordered-list-item',
+    },
+
+    {
+      value: 'Ordered List',
+      block: 'ordered-list-item',
+    },
+  ];
 
   return (
-    <div className="editorContainer">
-      <button onClick={onUnderlineClick}>U</button>
-      <button onClick={onBoldClick}>
-        <b>B</b>
-      </button>
-      <button onClick={onItalicClick}>
-        <em>I</em>
-      </button>
-      <button onClick={onStrikeThroughClick}>abc</button>
-      <BlockStyleToolbar editorState={state.editorState} onToggle={toggleBlockType} />
+    <div>
+      <div>
+        Inline Styles:
+        {inlineStyleButtons.map((button) => {
+          return renderInlineStyleButton(button.value, button.style);
+        })}
+      </div>
+
+      <div>
+        Block Types:
+        {blockTypeButtons.map((button) => {
+          return renderBlockButton(button.value, button.block);
+        })}
+      </div>
       <div className="editors">
         <Editor
-          blockStyleFn={getBlockStyle}
           editorState={state.editorState}
-          handleKeyCommand={handleKeyCommand}
           onChange={onChange}
+          handleKeyCommand={handleKeyCommand}
+          keyBindingFn={keyBindingFunction}
         />
       </div>
     </div>
