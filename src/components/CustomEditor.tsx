@@ -33,21 +33,10 @@ const CustomEditor = () => {
     // inline formatting key commands handles bold, italic, code, underline
     const editorState = RichUtils.handleKeyCommand(state.editorState, command);
 
-    // if (!editorState && command === 'strikethrough') {
-    //   editorState = RichUtils.toggleInlineStyle(this.state.editorState, 'STRIKETHROUGH');
-    // }
-
-    // if (!editorState && command === 'blockquote') {
-    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'blockquote');
-    // }
-
-    // if (!editorState && command === 'ordered-list') {
-    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'ordered-list-item');
-    // }
-
-    // if (!editorState && command === 'unordered-list') {
-    //   editorState = RichUtils.toggleBlockType(this.state.editorState, 'unordered-list-item');
-    // }
+    // CMD + Shift + X
+    if (!editorState && command === 'strikethrough') {
+      onChange(RichUtils.toggleInlineStyle(state.editorState, 'STRIKETHROUGH'));
+    }
 
     if (editorState) {
       setState({ editorState });
