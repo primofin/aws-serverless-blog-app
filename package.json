@@ -19,6 +19,8 @@
     "aws-amplify": "^4.3.28",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
+    "html-react-parser": "^3.0.1",
+    "html-to-react": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",

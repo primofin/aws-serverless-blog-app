@@ -10,6 +10,7 @@ import {
   convertFromRaw,
 } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+import parse from 'html-react-parser';
 
 import { blockTypeButtons, inlineStyleButtons } from '../data/editorData';
 
@@ -162,6 +163,7 @@ const CustomEditor = () => {
       </div>
       <h4>Editor content as HTML</h4>
       <pre>{state.editorContentHtml}</pre>
+      {state.editorContentHtml && parse(state.editorContentHtml)}
     </div>
   );
 };
