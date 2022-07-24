@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import { Editor, EditorState, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+
+type CustomEditorState = {
+  editorState: EditorState;
+  editorContentHtml?: string;
+};
 
 function keyBindingFunction(event: React.KeyboardEvent<HTMLElement>): string | null {
   if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 'x') {
@@ -22,11 +28,14 @@ function keyBindingFunction(event: React.KeyboardEvent<HTMLElement>): string | n
 }
 
 const CustomEditor = () => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<CustomEditorState>({
     editorState: EditorState.createEmpty(),
   });
   const onChange = (editorState: EditorState) => {
-    setState({ editorState });
+    setState({
+      editorState,
+      editorContentHtml: stateToHTML(editorState.getCurrentContent()),
+    });
   };
 
   const handleKeyCommand = (command: string) => {
@@ -181,6 +190,8 @@ const CustomEditor = () => {
           keyBindingFn={keyBindingFunction}
         />
       </div>
+      <h4>Editor content as HTML</h4>
+      <pre>{state.editorContentHtml}</pre>
     </div>
   );
 };
