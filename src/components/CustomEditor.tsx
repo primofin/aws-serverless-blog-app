@@ -10,7 +10,8 @@ import {
   convertFromRaw,
 } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import parse from 'html-react-parser';
+import Icon from '@mui/material/Icon';
+// import parse from 'html-react-parser';
 
 import { blockTypeButtons, inlineStyleButtons } from '../data/editorData';
 
@@ -82,44 +83,42 @@ const CustomEditor = () => {
     return 'not-handled';
   };
 
-  const toggleInlineStyle = (event: React.MouseEvent<HTMLInputElement>) => {
+  const toggleInlineStyle = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const style = event.currentTarget.getAttribute('data-style');
     onChange(RichUtils.toggleInlineStyle(state.editorState, style!));
   };
 
-  const toggleBlockType = (event: React.MouseEvent<HTMLInputElement>) => {
+  const toggleBlockType = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const block = event.currentTarget.getAttribute('data-block');
     onChange(RichUtils.toggleBlockType(state.editorState, block!));
   };
 
-  const renderBlockButton = (value: string, block: string) => {
+  const renderBlockButton = (value: string, block: string, icon?: string) => {
     return (
-      <input
-        type="button"
-        key={block}
-        value={value}
-        data-block={block}
-        onMouseDown={toggleBlockType}
-      />
+      <button type="button" key={block} data-block={block} onMouseDown={toggleBlockType}>
+        {icon ? <Icon>{icon}</Icon> : value}
+      </button>
     );
   };
 
-  const renderInlineStyleButton = (value: string, style: string) => {
+  const renderInlineStyleButton = (style: string, icon: string) => {
+    const isActive = state.editorState.getCurrentInlineStyle().has(style);
     return (
-      <input
+      <button
         style={{
-          fontStyle: state.editorState.getCurrentInlineStyle().has(style) ? 'italic' : 'normal',
+          backgroundColor: isActive ? 'black' : 'white',
         }}
         type="button"
         key={style}
-        value={value}
         data-style={style}
         onMouseDown={toggleInlineStyle}
-      />
+      >
+        <Icon>{icon}</Icon>
+      </button>
     );
   };
 
@@ -141,16 +140,14 @@ const CustomEditor = () => {
   return (
     <div>
       <div>
-        Inline Styles:
         {inlineStyleButtons.map((button) => {
-          return renderInlineStyleButton(button.value, button.style);
+          return renderInlineStyleButton(button.style, button.icon);
         })}
       </div>
 
       <div>
-        Block Types:
         {blockTypeButtons.map((button) => {
-          return renderBlockButton(button.value, button.block);
+          return renderBlockButton(button.value, button.block, button.icon);
         })}
       </div>
       <div className="editors">
@@ -161,9 +158,9 @@ const CustomEditor = () => {
           keyBindingFn={keyBindingFunction}
         />
       </div>
-      <h4>Editor content as HTML</h4>
+      {/* <h4>Editor content as HTML</h4>
       <pre>{state.editorContentHtml}</pre>
-      {state.editorContentHtml && parse(state.editorContentHtml)}
+      {state.editorContentHtml && parse(state.editorContentHtml)} */}
     </div>
   );
 };
