@@ -79,6 +79,9 @@ const CustomEditor = () => {
   const renderInlineStyleButton = (value: string, style: string) => {
     return (
       <input
+        style={{
+          fontStyle: state.editorState.getCurrentInlineStyle().has(style) ? 'italic' : 'normal',
+        }}
         type="button"
         key={style}
         value={value}
