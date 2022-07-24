@@ -37,6 +37,18 @@ const CustomEditor = () => {
     if (!editorState && command === 'strikethrough') {
       onChange(RichUtils.toggleInlineStyle(state.editorState, 'STRIKETHROUGH'));
     }
+    // CMD + Shift + 9
+    else if (!editorState && command === 'blockquote') {
+      onChange(RichUtils.toggleBlockType(state.editorState, 'blockquote'));
+    }
+    // CMD + Shift + 7
+    else if (!editorState && command === 'ordered-list') {
+      onChange(RichUtils.toggleBlockType(state.editorState, 'ordered-list-item'));
+    }
+    // CMD + Shift + 8
+    else if (!editorState && command === 'unordered-list') {
+      onChange(RichUtils.toggleBlockType(state.editorState, 'unordered-list-item'));
+    }
 
     if (editorState) {
       setState({ editorState });
@@ -50,18 +62,14 @@ const CustomEditor = () => {
     event.preventDefault();
 
     const style = event.currentTarget.getAttribute('data-style');
-    setState({
-      editorState: RichUtils.toggleInlineStyle(state.editorState, style!),
-    });
+    onChange(RichUtils.toggleInlineStyle(state.editorState, style!));
   };
 
   const toggleBlockType = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
 
     const block = event.currentTarget.getAttribute('data-block');
-    setState({
-      editorState: RichUtils.toggleBlockType(state.editorState, block!),
-    });
+    onChange(RichUtils.toggleBlockType(state.editorState, block!));
   };
 
   const renderBlockButton = (value: string, block: string) => {
