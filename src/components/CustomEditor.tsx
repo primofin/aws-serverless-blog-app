@@ -1,6 +1,17 @@
-import { useState } from 'react';
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
+import { useEffect, useState } from 'react';
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  getDefaultKeyBinding,
+  KeyBindingUtil,
+  convertToRaw,
+  ContentState,
+  convertFromRaw,
+} from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+
+import { blockTypeButtons, inlineStyleButtons } from '../data/editorData';
 
 type CustomEditorState = {
   editorState: EditorState;
@@ -31,10 +42,13 @@ const CustomEditor = () => {
   const [state, setState] = useState<CustomEditorState>({
     editorState: EditorState.createEmpty(),
   });
+
   const onChange = (editorState: EditorState) => {
+    const contentState = editorState.getCurrentContent();
+    saveContent(contentState);
     setState({
       editorState,
-      editorContentHtml: stateToHTML(editorState.getCurrentContent()),
+      editorContentHtml: stateToHTML(contentState),
     });
   };
 
@@ -108,64 +122,20 @@ const CustomEditor = () => {
     );
   };
 
-  const inlineStyleButtons = [
-    {
-      value: 'Bold',
-      style: 'BOLD',
-    },
+  const saveContent = (content: ContentState) => {
+    window.localStorage.setItem('content', JSON.stringify(convertToRaw(content)));
+  };
 
-    {
-      value: 'Italic',
-      style: 'ITALIC',
-    },
-
-    {
-      value: 'Underline',
-      style: 'UNDERLINE',
-    },
-
-    {
-      value: 'Strikethrough',
-      style: 'STRIKETHROUGH',
-    },
-
-    {
-      value: 'Code',
-      style: 'CODE',
-    },
-  ];
-
-  const blockTypeButtons = [
-    {
-      value: 'Heading One',
-      block: 'header-one',
-    },
-
-    {
-      value: 'Heading Two',
-      block: 'header-two',
-    },
-
-    {
-      value: 'Heading Three',
-      block: 'header-three',
-    },
-
-    {
-      value: 'Blockquote',
-      block: 'blockquote',
-    },
-
-    {
-      value: 'Unordered List',
-      block: 'unordered-list-item',
-    },
-
-    {
-      value: 'Ordered List',
-      block: 'ordered-list-item',
-    },
-  ];
+  useEffect(() => {
+    const content = window.localStorage.getItem('content');
+    if (content) {
+      setState({
+        editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(content))),
+      });
+    } else {
+      setState({ editorState: EditorState.createEmpty() });
+    }
+  }, []);
 
   return (
     <div>
