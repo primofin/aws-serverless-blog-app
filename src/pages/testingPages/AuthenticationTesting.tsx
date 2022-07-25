@@ -1,29 +1,28 @@
-import { Link, Navigate } from 'react-router-dom';
-import { Amplify, Auth } from 'aws-amplify';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Amplify } from 'aws-amplify';
+import awsExports from '../../aws-exports';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 
-import awsExports from '../../aws-exports';
-import { useState } from 'react';
+import { getCurrentUser } from '../../redux/slices/authSlice';
+import { AppDispatch, RootState } from '../../redux/store';
 
 Amplify.configure(awsExports);
 
 function AuthenticationTesting() {
-  const [state, setState] = useState();
-  // Retrieve current authenticated user
-  Auth.currentAuthenticatedUser({
-    bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-  })
-    .then((user) => {
-      console.log(user);
-      setState(user);
-    })
-    .catch((err) => console.log(err));
+  const dispatch = useDispatch<AppDispatch>();
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
+  console.log('user', user);
   return (
     <>
-      {state && <Navigate to="/" replace={true} />}
       <main>
-        <h2>Welcome to the homepage!</h2>
+        {user && <h2>Welcome {user.username} to the homepage!</h2>}
         <p>You can do this, I believe in you.</p>
       </main>
       <nav>

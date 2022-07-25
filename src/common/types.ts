@@ -11,3 +11,10 @@ export type User = {
   locale?: string;
   picture?: string;
 };
+
+export type AuthState = {
+  isLoading: boolean | null;
+  isLoggedIn: boolean;
+  user?: User;
+  error?: unknown;
+};
