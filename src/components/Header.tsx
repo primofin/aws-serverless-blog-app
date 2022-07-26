@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import AppLogo from '../assets/app_logo.png';
@@ -62,10 +61,12 @@ const Header = () => {
               horizontal: 'left',
             }}
           >
-            <Typography sx={{ p: 2 }}>{user.username}</Typography>
-            <Button variant="text" onClick={handleSignOutBtnClick}>
-              Sign out
-            </Button>
+            <div className="header__popover">
+              <Link to="authentication-test">{user.username}</Link>
+              <Button variant="text" onClick={handleSignOutBtnClick}>
+                Sign out
+              </Button>
+            </div>
           </Popover>
         </>
       );
@@ -87,7 +88,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div>
+    <div className="header">
       <header>
         <nav>
           <a href="/">
