@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
 import awsExports from '../../aws-exports';
 import '@aws-amplify/ui-react/styles.css';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 import { getCurrentUser } from '../../redux/slices/authSlice';
 import { AppDispatch, RootState } from '../../redux/store';
@@ -19,7 +19,7 @@ function AuthenticationTesting() {
     dispatch(getCurrentUser());
   }, []);
   return (
-    <>
+    <Authenticator>
       <main>
         {user && <h2>Welcome {user.username} to the homepage!</h2>}
         <p>You can do this, I believe in you.</p>
@@ -27,8 +27,8 @@ function AuthenticationTesting() {
       <nav>
         <Link to="/about">About</Link>
       </nav>
-    </>
+    </Authenticator>
   );
 }
 
-export default withAuthenticator(AuthenticationTesting);
+export default AuthenticationTesting;

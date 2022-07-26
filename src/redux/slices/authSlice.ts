@@ -15,10 +15,10 @@ export const authSlice = createSlice({
     error: undefined,
   } as AuthState,
   reducers: {
-    signOut: (state: AuthState) => {
-      state.isLoggedIn = false;
-      state.user = undefined;
-    },
+    // signOut: (state: AuthState) => {
+    //   state.isLoggedIn = false;
+    //   state.user = undefined;
+    // },
   },
   extraReducers: createExtraReducers(),
 });
@@ -26,11 +26,12 @@ export const authSlice = createSlice({
 function createExtraActions() {
   return {
     getCurrentUser: getCurrentUser(),
+    signOut: signOut(),
   };
 
   // Retrieve current authenticated user
   function getCurrentUser() {
-    return createAsyncThunk(`auth/getAll`, async () => {
+    return createAsyncThunk(`auth/getCurrentUser`, async () => {
       const data = await Auth.currentAuthenticatedUser({
         bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
       });
@@ -38,11 +39,17 @@ function createExtraActions() {
       return { username: data.username, email: data.attributes.email } as User;
     });
   }
+  function signOut() {
+    return createAsyncThunk(`auth/signOut`, async () => {
+      await Auth.signOut();
+    });
+  }
 }
 
 function createExtraReducers() {
   return {
     ...getCurrentUser(),
+    ...signOut(),
   };
 
   function getCurrentUser() {
@@ -53,8 +60,26 @@ function createExtraReducers() {
       },
       [fulfilled as any]: (state: AuthState, action: PayloadAction<User>) => {
         state.user = action.payload;
-        console.log('appState', state.user);
-        console.log('payload', action.payload);
+        state.isLoading = false;
+        state.isLoggedIn = true;
+      },
+      [rejected as any]: (state: AuthState, action: any) => {
+        console.log('Error', action.error);
+        state.error = { error: action.error };
+      },
+    };
+  }
+
+  function signOut() {
+    const { pending, fulfilled, rejected } = extraActions.signOut;
+    return {
+      [pending as any]: (state: AuthState) => {
+        state.isLoading = true;
+      },
+      [fulfilled as any]: (state: AuthState) => {
+        state.isLoggedIn = false;
+        state.isLoading = false;
+        state.user = undefined;
       },
       [rejected as any]: (state: AuthState, action: any) => {
         console.log('Error', action.error);
@@ -64,7 +89,7 @@ function createExtraReducers() {
   }
 }
 
-export const { signOut } = authSlice.actions;
-export const { getCurrentUser } = extraActions;
+// export const { signOut } = authSlice.actions;
+export const { getCurrentUser, signOut } = extraActions;
 
 export default authSlice.reducer;

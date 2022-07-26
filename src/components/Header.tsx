@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 import AppLogo from '../assets/app_logo.png';
-import { getCurrentUser } from '../redux/slices/authSlice';
+import { getCurrentUser, signOut } from '../redux/slices/authSlice';
 import { AppDispatch, RootState } from '../redux/store';
 import ButtonLink from './ButtonLink';
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user, isLoading } = useSelector((state: RootState) => state.auth);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,6 +21,11 @@ const Header = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSignOutBtnClick = () => {
+    dispatch(signOut());
+    isLoading && window.location.reload();
   };
 
   const open = Boolean(anchorEl);
@@ -57,6 +63,9 @@ const Header = () => {
             }}
           >
             <Typography sx={{ p: 2 }}>{user.username}</Typography>
+            <Button variant="text" onClick={handleSignOutBtnClick}>
+              Sign out
+            </Button>
           </Popover>
         </>
       );
@@ -67,7 +76,7 @@ const Header = () => {
           <Link to="authentication-test">Log in</Link>
         </li>
         <li>
-          <ButtonLink link="#" text="Create account"></ButtonLink>
+          <ButtonLink link="authentication-test" text="Create account"></ButtonLink>
         </li>
       </ul>
     );

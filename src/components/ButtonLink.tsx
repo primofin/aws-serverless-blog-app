@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 type ButtonLinkProps = {
   text: string;
   link: string;
@@ -5,9 +6,9 @@ type ButtonLinkProps = {
 };
 const ButtonLink = ({ text, link, type = 'primary' }: ButtonLinkProps) => {
   return (
-    <a className={`button-link button-link__${type}`} href={link}>
+    <Link className={`button-link button-link__${type}`} to={link}>
       {text}
-    </a>
+    </Link>
   );
 };
 
