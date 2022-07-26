@@ -34,6 +34,7 @@ header {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $text-color;
+    padding: 0 1rem;
     li {
       display: inline;
       top: 50%;
@@ -42,6 +43,10 @@ header {
       a {
         color: $text-color;
       }
+    }
+
+    button {
+      align-self: center;
     }
   }
 

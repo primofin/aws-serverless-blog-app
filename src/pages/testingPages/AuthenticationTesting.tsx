@@ -18,7 +18,6 @@ function AuthenticationTesting() {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
-  console.log('user', user);
   return (
     <>
       <main>
