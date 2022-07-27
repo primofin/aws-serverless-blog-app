@@ -1,7 +1,97 @@
-/* Tslint:disable */
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateBlog = /* GraphQL */ `
   subscription OnCreateBlog {
     onCreateBlog {
@@ -13,6 +103,7 @@ export const onCreateBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -33,6 +124,7 @@ export const onUpdateBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -53,6 +145,7 @@ export const onDeleteBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -76,6 +169,24 @@ export const onCreatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -88,6 +199,7 @@ export const onCreatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -106,6 +218,24 @@ export const onUpdatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -118,6 +248,7 @@ export const onUpdatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -136,6 +267,24 @@ export const onDeletePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -148,6 +297,7 @@ export const onDeletePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -165,11 +315,27 @@ export const onCreateComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content
@@ -192,11 +358,27 @@ export const onUpdateComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content
@@ -219,11 +401,27 @@ export const onDeleteComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content

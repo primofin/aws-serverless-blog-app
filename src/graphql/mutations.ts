@@ -1,7 +1,97 @@
-/* Tslint:disable */
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createUser = /* GraphQL */ `
+  mutation CreateUser($input: CreateUserInput!, $condition: ModelUserConditionInput) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser($input: UpdateUserInput!, $condition: ModelUserConditionInput) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser($input: DeleteUserInput!, $condition: ModelUserConditionInput) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createBlog = /* GraphQL */ `
   mutation CreateBlog($input: CreateBlogInput!, $condition: ModelBlogConditionInput) {
     createBlog(input: $input, condition: $condition) {
@@ -13,6 +103,7 @@ export const createBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -33,6 +124,7 @@ export const updateBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -53,6 +145,7 @@ export const deleteBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -76,6 +169,24 @@ export const createPost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -88,6 +199,7 @@ export const createPost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -106,6 +218,24 @@ export const updatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -118,6 +248,7 @@ export const updatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -136,6 +267,24 @@ export const deletePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      user {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -148,6 +297,7 @@ export const deletePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -165,11 +315,27 @@ export const createComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content
@@ -192,11 +358,27 @@ export const updateComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content
@@ -219,11 +401,27 @@ export const deleteComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        user {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content

@@ -1,8 +1,21 @@
 export type User = {
+  id: string;
   username: string;
   given_name?: string;
   family_name?: string;
-  preferred_username?: string;
+  gender?: string;
+  email: string;
+  address?: string;
+  phone_number?: string;
+  website?: string;
+  locale?: string;
+  picture?: string;
+};
+
+export type UserAtrributes = {
+  id: string;
+  given_name?: string;
+  family_name?: string;
   gender?: string;
   email: string;
   address?: string;

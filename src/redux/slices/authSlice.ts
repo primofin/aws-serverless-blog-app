@@ -36,7 +36,34 @@ function createExtraActions() {
         bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
       });
       console.log('data', data);
-      return { username: data.username, email: data.attributes.email } as User;
+      const {
+        email,
+        sub,
+        given_name,
+        family_name,
+        picture,
+        gender,
+        address,
+        phone_number,
+        website,
+        locale,
+      } = data.attributes;
+
+      const user = {
+        username: data.username,
+        email,
+        id: sub,
+        given_name,
+        family_name,
+        picture,
+        gender,
+        address,
+        phone_number,
+        website,
+        locale,
+      } as User;
+      console.log('user', user);
+      return user;
     });
   }
   function signOut() {

@@ -1,17 +1,35 @@
-/* Tslint:disable */
+/* tslint:disable */
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateBlogInput = {
+export type CreateUserInput = {
   id?: string | null;
-  name: string;
+  username: string;
+  email: string;
+  picture?: string | null;
+  given_name?: string | null;
+  family_name?: string | null;
+  gender?: string | null;
+  address?: string | null;
+  phone_number?: string | null;
+  website?: string | null;
+  locale?: string | null;
 };
 
-export type ModelBlogConditionInput = {
-  name?: ModelStringInput | null;
-  and?: Array<ModelBlogConditionInput | null> | null;
-  or?: Array<ModelBlogConditionInput | null> | null;
-  not?: ModelBlogConditionInput | null;
+export type ModelUserConditionInput = {
+  username?: ModelStringInput | null;
+  email?: ModelStringInput | null;
+  picture?: ModelStringInput | null;
+  given_name?: ModelStringInput | null;
+  family_name?: ModelStringInput | null;
+  gender?: ModelStringInput | null;
+  address?: ModelStringInput | null;
+  phone_number?: ModelStringInput | null;
+  website?: ModelStringInput | null;
+  locale?: ModelStringInput | null;
+  and?: Array<ModelUserConditionInput | null> | null;
+  or?: Array<ModelUserConditionInput | null> | null;
+  not?: ModelUserConditionInput | null;
 };
 
 export type ModelStringInput = {
@@ -53,11 +71,20 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type Blog = {
-  __typename: 'Blog';
+export type User = {
+  __typename: 'User';
   id: string;
-  name: string;
+  username: string;
+  email: string;
   posts?: ModelPostConnection | null;
+  picture?: string | null;
+  given_name?: string | null;
+  family_name?: string | null;
+  gender?: string | null;
+  address?: string | null;
+  phone_number?: string | null;
+  website?: string | null;
+  locale?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -73,10 +100,21 @@ export type Post = {
   id: string;
   title: string;
   blog?: Blog | null;
+  user?: User | null;
   comments?: ModelCommentConnection | null;
   createdAt: string;
   updatedAt: string;
+  userPostsId?: string | null;
   blogPostsId?: string | null;
+};
+
+export type Blog = {
+  __typename: 'Blog';
+  id: string;
+  name: string;
+  posts?: ModelPostConnection | null;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ModelCommentConnection = {
@@ -95,6 +133,36 @@ export type Comment = {
   postCommentsId?: string | null;
 };
 
+export type UpdateUserInput = {
+  id: string;
+  username?: string | null;
+  email?: string | null;
+  picture?: string | null;
+  given_name?: string | null;
+  family_name?: string | null;
+  gender?: string | null;
+  address?: string | null;
+  phone_number?: string | null;
+  website?: string | null;
+  locale?: string | null;
+};
+
+export type DeleteUserInput = {
+  id: string;
+};
+
+export type CreateBlogInput = {
+  id?: string | null;
+  name: string;
+};
+
+export type ModelBlogConditionInput = {
+  name?: ModelStringInput | null;
+  and?: Array<ModelBlogConditionInput | null> | null;
+  or?: Array<ModelBlogConditionInput | null> | null;
+  not?: ModelBlogConditionInput | null;
+};
+
 export type UpdateBlogInput = {
   id: string;
   name?: string | null;
@@ -107,6 +175,7 @@ export type DeleteBlogInput = {
 export type CreatePostInput = {
   id?: string | null;
   title: string;
+  userPostsId?: string | null;
   blogPostsId?: string | null;
 };
 
@@ -115,6 +184,7 @@ export type ModelPostConditionInput = {
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
+  userPostsId?: ModelIDInput | null;
   blogPostsId?: ModelIDInput | null;
 };
 
@@ -137,6 +207,7 @@ export type ModelIDInput = {
 export type UpdatePostInput = {
   id: string;
   title?: string | null;
+  userPostsId?: string | null;
   blogPostsId?: string | null;
 };
 
@@ -168,6 +239,29 @@ export type DeleteCommentInput = {
   id: string;
 };
 
+export type ModelUserFilterInput = {
+  id?: ModelIDInput | null;
+  username?: ModelStringInput | null;
+  email?: ModelStringInput | null;
+  picture?: ModelStringInput | null;
+  given_name?: ModelStringInput | null;
+  family_name?: ModelStringInput | null;
+  gender?: ModelStringInput | null;
+  address?: ModelStringInput | null;
+  phone_number?: ModelStringInput | null;
+  website?: ModelStringInput | null;
+  locale?: ModelStringInput | null;
+  and?: Array<ModelUserFilterInput | null> | null;
+  or?: Array<ModelUserFilterInput | null> | null;
+  not?: ModelUserFilterInput | null;
+};
+
+export type ModelUserConnection = {
+  __typename: 'ModelUserConnection';
+  items: Array<User | null>;
+  nextToken?: string | null;
+};
+
 export type ModelBlogFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
@@ -188,6 +282,7 @@ export type ModelPostFilterInput = {
   and?: Array<ModelPostFilterInput | null> | null;
   or?: Array<ModelPostFilterInput | null> | null;
   not?: ModelPostFilterInput | null;
+  userPostsId?: ModelIDInput | null;
   blogPostsId?: ModelIDInput | null;
 };
 
@@ -198,6 +293,117 @@ export type ModelCommentFilterInput = {
   or?: Array<ModelCommentFilterInput | null> | null;
   not?: ModelCommentFilterInput | null;
   postCommentsId?: ModelIDInput | null;
+};
+
+export type CreateUserMutationVariables = {
+  input: CreateUserInput;
+  condition?: ModelUserConditionInput | null;
+};
+
+export type CreateUserMutation = {
+  createUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+};
+
+export type UpdateUserMutationVariables = {
+  input: UpdateUserInput;
+  condition?: ModelUserConditionInput | null;
+};
+
+export type UpdateUserMutation = {
+  updateUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+};
+
+export type DeleteUserMutationVariables = {
+  input: DeleteUserInput;
+  condition?: ModelUserConditionInput | null;
+};
+
+export type DeleteUserMutation = {
+  deleteUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
 };
 
 export type CreateBlogMutationVariables = {
@@ -218,6 +424,7 @@ export type CreateBlogMutation = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -245,6 +452,7 @@ export type UpdateBlogMutation = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -272,6 +480,7 @@ export type DeleteBlogMutation = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -302,6 +511,26 @@ export type CreatePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -316,6 +545,7 @@ export type CreatePostMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -341,6 +571,26 @@ export type UpdatePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -355,6 +605,7 @@ export type UpdatePostMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -380,6 +631,26 @@ export type DeletePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -394,6 +665,7 @@ export type DeletePostMutation = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -418,12 +690,29 @@ export type CreateCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
@@ -453,12 +742,29 @@ export type UpdateCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
@@ -488,18 +794,104 @@ export type DeleteCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
     createdAt: string;
     updatedAt: string;
     postCommentsId?: string | null;
+  } | null;
+};
+
+export type GetUserQueryVariables = {
+  id: string;
+};
+
+export type GetUserQuery = {
+  getUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+};
+
+export type ListUsersQueryVariables = {
+  filter?: ModelUserFilterInput | null;
+  limit?: number | null;
+  nextToken?: string | null;
+};
+
+export type ListUsersQuery = {
+  listUsers?: {
+    __typename: 'ModelUserConnection';
+    items: Array<{
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null>;
+    nextToken?: string | null;
   } | null;
 };
 
@@ -520,6 +912,7 @@ export type GetBlogQuery = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -573,6 +966,26 @@ export type GetPostQuery = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -587,6 +1000,7 @@ export type GetPostQuery = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -611,12 +1025,29 @@ export type ListPostsQuery = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null>;
     nextToken?: string | null;
@@ -642,12 +1073,29 @@ export type GetCommentQuery = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
@@ -675,6 +1123,7 @@ export type ListCommentsQuery = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null;
       content: string;
@@ -683,6 +1132,102 @@ export type ListCommentsQuery = {
       postCommentsId?: string | null;
     } | null>;
     nextToken?: string | null;
+  } | null;
+};
+
+export type OnCreateUserSubscription = {
+  onCreateUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+};
+
+export type OnUpdateUserSubscription = {
+  onUpdateUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+};
+
+export type OnDeleteUserSubscription = {
+  onDeleteUser?: {
+    __typename: 'User';
+    id: string;
+    username: string;
+    email: string;
+    posts?: {
+      __typename: 'ModelPostConnection';
+      items: Array<{
+        __typename: 'Post';
+        id: string;
+        title: string;
+        createdAt: string;
+        updatedAt: string;
+        userPostsId?: string | null;
+        blogPostsId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+    } | null;
+    picture?: string | null;
+    given_name?: string | null;
+    family_name?: string | null;
+    gender?: string | null;
+    address?: string | null;
+    phone_number?: string | null;
+    website?: string | null;
+    locale?: string | null;
+    createdAt: string;
+    updatedAt: string;
   } | null;
 };
 
@@ -699,6 +1244,7 @@ export type OnCreateBlogSubscription = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -721,6 +1267,7 @@ export type OnUpdateBlogSubscription = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -743,6 +1290,7 @@ export type OnDeleteBlogSubscription = {
         title: string;
         createdAt: string;
         updatedAt: string;
+        userPostsId?: string | null;
         blogPostsId?: string | null;
       } | null>;
       nextToken?: string | null;
@@ -768,6 +1316,26 @@ export type OnCreatePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -782,6 +1350,7 @@ export type OnCreatePostSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -802,6 +1371,26 @@ export type OnUpdatePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -816,6 +1405,7 @@ export type OnUpdatePostSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -836,6 +1426,26 @@ export type OnDeletePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
+    user?: {
+      __typename: 'User';
+      id: string;
+      username: string;
+      email: string;
+      posts?: {
+        __typename: 'ModelPostConnection';
+        nextToken?: string | null;
+      } | null;
+      picture?: string | null;
+      given_name?: string | null;
+      family_name?: string | null;
+      gender?: string | null;
+      address?: string | null;
+      phone_number?: string | null;
+      website?: string | null;
+      locale?: string | null;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
     comments?: {
       __typename: 'ModelCommentConnection';
       items: Array<{
@@ -850,6 +1460,7 @@ export type OnDeletePostSubscription = {
     } | null;
     createdAt: string;
     updatedAt: string;
+    userPostsId?: string | null;
     blogPostsId?: string | null;
   } | null;
 };
@@ -869,12 +1480,29 @@ export type OnCreateCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
@@ -899,12 +1527,29 @@ export type OnUpdateCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
@@ -929,12 +1574,29 @@ export type OnDeleteCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
+      user?: {
+        __typename: 'User';
+        id: string;
+        username: string;
+        email: string;
+        picture?: string | null;
+        given_name?: string | null;
+        family_name?: string | null;
+        gender?: string | null;
+        address?: string | null;
+        phone_number?: string | null;
+        website?: string | null;
+        locale?: string | null;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
       comments?: {
         __typename: 'ModelCommentConnection';
         nextToken?: string | null;
       } | null;
       createdAt: string;
       updatedAt: string;
+      userPostsId?: string | null;
       blogPostsId?: string | null;
     } | null;
     content: string;
