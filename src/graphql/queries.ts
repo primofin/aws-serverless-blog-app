@@ -27,6 +27,8 @@ export const getUser = /* GraphQL */ `
       phone_number
       website
       locale
+      occupation
+      bioIntro
       createdAt
       updatedAt
     }
@@ -50,6 +52,8 @@ export const listUsers = /* GraphQL */ `
         phone_number
         website
         locale
+        occupation
+        bioIntro
         createdAt
         updatedAt
       }
@@ -123,6 +127,8 @@ export const getPost = /* GraphQL */ `
         phone_number
         website
         locale
+        occupation
+        bioIntro
         createdAt
         updatedAt
       }
@@ -167,6 +173,8 @@ export const listPosts = /* GraphQL */ `
           phone_number
           website
           locale
+          occupation
+          bioIntro
           createdAt
           updatedAt
         }
@@ -207,6 +215,8 @@ export const getComment = /* GraphQL */ `
           phone_number
           website
           locale
+          occupation
+          bioIntro
           createdAt
           updatedAt
         }

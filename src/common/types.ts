@@ -10,6 +10,8 @@ export type User = {
   website?: string;
   locale?: string;
   picture?: string;
+  ocuppation?: string;
+  bioIntro?: string;
 };
 
 export type UserAtrributes = {

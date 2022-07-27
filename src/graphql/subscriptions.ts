@@ -27,6 +27,8 @@ export const onCreateUser = /* GraphQL */ `
       phone_number
       website
       locale
+      occupation
+      bioIntro
       createdAt
       updatedAt
     }
@@ -57,6 +59,8 @@ export const onUpdateUser = /* GraphQL */ `
       phone_number
       website
       locale
+      occupation
+      bioIntro
       createdAt
       updatedAt
     }
@@ -87,6 +91,8 @@ export const onDeleteUser = /* GraphQL */ `
       phone_number
       website
       locale
+      occupation
+      bioIntro
       createdAt
       updatedAt
     }
@@ -184,6 +190,8 @@ export const onCreatePost = /* GraphQL */ `
         phone_number
         website
         locale
+        occupation
+        bioIntro
         createdAt
         updatedAt
       }
@@ -233,6 +241,8 @@ export const onUpdatePost = /* GraphQL */ `
         phone_number
         website
         locale
+        occupation
+        bioIntro
         createdAt
         updatedAt
       }
@@ -282,6 +292,8 @@ export const onDeletePost = /* GraphQL */ `
         phone_number
         website
         locale
+        occupation
+        bioIntro
         createdAt
         updatedAt
       }
@@ -327,6 +339,8 @@ export const onCreateComment = /* GraphQL */ `
           phone_number
           website
           locale
+          occupation
+          bioIntro
           createdAt
           updatedAt
         }
@@ -370,6 +384,8 @@ export const onUpdateComment = /* GraphQL */ `
           phone_number
           website
           locale
+          occupation
+          bioIntro
           createdAt
           updatedAt
         }
@@ -413,6 +429,8 @@ export const onDeleteComment = /* GraphQL */ `
           phone_number
           website
           locale
+          occupation
+          bioIntro
           createdAt
           updatedAt
         }

@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 
 import AppLogo from '../assets/app_logo.png';
-import { getCurrentUser, signOut } from '../redux/slices/authSlice';
+import { signOut } from '../redux/slices/authSlice';
 import { AppDispatch, RootState } from '../redux/store';
 import ButtonLink from './ButtonLink';
 
-const Header = () => {
+type HeaderProps = {
+  hasSubHeading?: boolean;
+};
+
+const Header = ({ hasSubHeading = true }: HeaderProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { user, isLoading } = useSelector((state: RootState) => state.auth);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -43,12 +47,12 @@ const Header = () => {
 
   const renderAuthButtons = () => {
     if (user) {
-      const imgSrc = user.picture ?? 'https://via.placeholder.com/32.png/';
+      const imgSrc = user.picture ?? 'https://via.placeholder.com/40.png/';
       return (
         <>
           <button aria-describedby={id} onClick={handleClick} className="rounded-button">
             <span>
-              <img src={imgSrc} alt="cover image"></img>
+              <img src={imgSrc} alt="cover image" className="rounded"></img>
             </span>
           </button>
           <Popover
@@ -84,24 +88,22 @@ const Header = () => {
     );
   };
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, []);
-
   return (
     <div className="header">
       <header>
         <nav>
           <a href="/">
-            <img src={AppLogo}></img>
+            <img src={AppLogo} className="rounded"></img>
           </a>
           {renderAuthButtons()}
         </nav>
       </header>
       <main>
-        <section className="jumbotron">
-          <h1>A space for primos </h1>
-        </section>
+        {hasSubHeading && (
+          <section className="jumbotron">
+            <h1>A space for primos </h1>
+          </section>
+        )}
       </main>
     </div>
   );

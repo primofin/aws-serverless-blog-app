@@ -14,6 +14,8 @@ export type CreateUserInput = {
   phone_number?: string | null;
   website?: string | null;
   locale?: string | null;
+  occupation?: string | null;
+  bioIntro?: string | null;
 };
 
 export type ModelUserConditionInput = {
@@ -27,6 +29,8 @@ export type ModelUserConditionInput = {
   phone_number?: ModelStringInput | null;
   website?: ModelStringInput | null;
   locale?: ModelStringInput | null;
+  occupation?: ModelStringInput | null;
+  bioIntro?: ModelStringInput | null;
   and?: Array<ModelUserConditionInput | null> | null;
   or?: Array<ModelUserConditionInput | null> | null;
   not?: ModelUserConditionInput | null;
@@ -85,6 +89,8 @@ export type User = {
   phone_number?: string | null;
   website?: string | null;
   locale?: string | null;
+  occupation?: string | null;
+  bioIntro?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -145,6 +151,8 @@ export type UpdateUserInput = {
   phone_number?: string | null;
   website?: string | null;
   locale?: string | null;
+  occupation?: string | null;
+  bioIntro?: string | null;
 };
 
 export type DeleteUserInput = {
@@ -251,6 +259,8 @@ export type ModelUserFilterInput = {
   phone_number?: ModelStringInput | null;
   website?: ModelStringInput | null;
   locale?: ModelStringInput | null;
+  occupation?: ModelStringInput | null;
+  bioIntro?: ModelStringInput | null;
   and?: Array<ModelUserFilterInput | null> | null;
   or?: Array<ModelUserFilterInput | null> | null;
   not?: ModelUserFilterInput | null;
@@ -327,6 +337,8 @@ export type CreateUserMutation = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -364,6 +376,8 @@ export type UpdateUserMutation = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -401,6 +415,8 @@ export type DeleteUserMutation = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -528,6 +544,8 @@ export type CreatePostMutation = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -588,6 +606,8 @@ export type UpdatePostMutation = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -648,6 +668,8 @@ export type DeletePostMutation = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -703,6 +725,8 @@ export type CreateCommentMutation = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -755,6 +779,8 @@ export type UpdateCommentMutation = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -807,6 +833,8 @@ export type DeleteCommentMutation = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -857,6 +885,8 @@ export type GetUserQuery = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -888,6 +918,8 @@ export type ListUsersQuery = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null>;
@@ -983,6 +1015,8 @@ export type GetPostQuery = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -1038,6 +1072,8 @@ export type ListPostsQuery = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -1086,6 +1122,8 @@ export type GetCommentQuery = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -1162,6 +1200,8 @@ export type OnCreateUserSubscription = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -1194,6 +1234,8 @@ export type OnUpdateUserSubscription = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -1226,6 +1268,8 @@ export type OnDeleteUserSubscription = {
     phone_number?: string | null;
     website?: string | null;
     locale?: string | null;
+    occupation?: string | null;
+    bioIntro?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null;
@@ -1333,6 +1377,8 @@ export type OnCreatePostSubscription = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -1388,6 +1434,8 @@ export type OnUpdatePostSubscription = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -1443,6 +1491,8 @@ export type OnDeletePostSubscription = {
       phone_number?: string | null;
       website?: string | null;
       locale?: string | null;
+      occupation?: string | null;
+      bioIntro?: string | null;
       createdAt: string;
       updatedAt: string;
     } | null;
@@ -1493,6 +1543,8 @@ export type OnCreateCommentSubscription = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -1540,6 +1592,8 @@ export type OnUpdateCommentSubscription = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
@@ -1587,6 +1641,8 @@ export type OnDeleteCommentSubscription = {
         phone_number?: string | null;
         website?: string | null;
         locale?: string | null;
+        occupation?: string | null;
+        bioIntro?: string | null;
         createdAt: string;
         updatedAt: string;
       } | null;
