@@ -13,8 +13,8 @@
     },
     "categories": {
       "auth": {
-        "amplify186a990e": {},
-        "true": {}
+        "true": {},
+        "amplifyabff9dc9": {}
       },
       "function": {
         "S3Trigger6756fe9d": {
