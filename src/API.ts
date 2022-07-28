@@ -106,7 +106,7 @@ export type Post = {
   id: string;
   title: string;
   blog?: Blog | null;
-  user?: User | null;
+  author?: User | null;
   comments?: ModelCommentConnection | null;
   createdAt: string;
   updatedAt: string;
@@ -527,7 +527,7 @@ export type CreatePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -589,7 +589,7 @@ export type UpdatePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -651,7 +651,7 @@ export type DeletePostMutation = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -712,7 +712,7 @@ export type CreateCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -766,7 +766,7 @@ export type UpdateCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -820,7 +820,7 @@ export type DeleteCommentMutation = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -998,7 +998,7 @@ export type GetPostQuery = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -1059,7 +1059,7 @@ export type ListPostsQuery = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -1109,7 +1109,7 @@ export type GetCommentQuery = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -1360,7 +1360,7 @@ export type OnCreatePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -1417,7 +1417,7 @@ export type OnUpdatePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -1474,7 +1474,7 @@ export type OnDeletePostSubscription = {
       createdAt: string;
       updatedAt: string;
     } | null;
-    user?: {
+    author?: {
       __typename: 'User';
       id: string;
       username: string;
@@ -1530,7 +1530,7 @@ export type OnCreateCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -1579,7 +1579,7 @@ export type OnUpdateCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;
@@ -1628,7 +1628,7 @@ export type OnDeleteCommentSubscription = {
         createdAt: string;
         updatedAt: string;
       } | null;
-      user?: {
+      author?: {
         __typename: 'User';
         id: string;
         username: string;

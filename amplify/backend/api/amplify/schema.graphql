@@ -29,7 +29,7 @@ type Post @model {
   id: ID!
   title: String!
   blog: Blog @belongsTo
-  user: User @belongsTo
+  author: User @belongsTo
   comments: [Comment] @hasMany
 }
 

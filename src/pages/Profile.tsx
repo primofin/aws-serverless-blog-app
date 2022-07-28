@@ -4,9 +4,13 @@ import { RootState } from '../redux/store';
 
 import Article from '../components/Article';
 import Header from '../components/Header';
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useSelector((state: RootState) => state.auth);
+  const params = useParams();
+
+  console.log('params', params.username);
 
   const imgSrc = user?.picture ?? 'https://via.placeholder.com/140.png/';
   return (

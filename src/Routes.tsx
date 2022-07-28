@@ -14,7 +14,7 @@ const AppRouter = () => (
     <Route path="/new" element={<PostFactory />} />
     <Route path="/api-test" element={<TestingAPI />} />
     <Route path="/editor" element={<Editor />} />
-    <Route path="/user" element={<Profile />} />
+    <Route path=":username" element={<Profile />} />
   </Routes>
 );
 export default AppRouter;
