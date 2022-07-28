@@ -1,7 +1,66 @@
-/* Tslint:disable */
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      email
+      posts {
+        items {
+          id
+          title
+          createdAt
+          updatedAt
+          userPostsId
+          blogPostsId
+        }
+        nextToken
+      }
+      picture
+      given_name
+      family_name
+      gender
+      address
+      phone_number
+      website
+      locale
+      occupation
+      bioIntro
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers($filter: ModelUserFilterInput, $limit: Int, $nextToken: String) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        occupation
+        bioIntro
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getBlog = /* GraphQL */ `
   query GetBlog($id: ID!) {
     getBlog(id: $id) {
@@ -13,6 +72,7 @@ export const getBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         nextToken
@@ -52,6 +112,26 @@ export const getPost = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      author {
+        id
+        username
+        email
+        posts {
+          nextToken
+        }
+        picture
+        given_name
+        family_name
+        gender
+        address
+        phone_number
+        website
+        locale
+        occupation
+        bioIntro
+        createdAt
+        updatedAt
+      }
       comments {
         items {
           id
@@ -64,6 +144,7 @@ export const getPost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userPostsId
       blogPostsId
     }
   }
@@ -80,11 +161,29 @@ export const listPosts = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        author {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          occupation
+          bioIntro
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       nextToken
@@ -104,11 +203,29 @@ export const getComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        author {
+          id
+          username
+          email
+          picture
+          given_name
+          family_name
+          gender
+          address
+          phone_number
+          website
+          locale
+          occupation
+          bioIntro
+          createdAt
+          updatedAt
+        }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        userPostsId
         blogPostsId
       }
       content
@@ -128,6 +245,7 @@ export const listComments = /* GraphQL */ `
           title
           createdAt
           updatedAt
+          userPostsId
           blogPostsId
         }
         content
