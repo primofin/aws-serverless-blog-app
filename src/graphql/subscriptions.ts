@@ -175,7 +175,7 @@ export const onCreatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      author {
         id
         username
         email
@@ -226,7 +226,7 @@ export const onUpdatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      author {
         id
         username
         email
@@ -277,7 +277,7 @@ export const onDeletePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      author {
         id
         username
         email
@@ -327,7 +327,7 @@ export const onCreateComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        user {
+        author {
           id
           username
           email
@@ -372,7 +372,7 @@ export const onUpdateComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        user {
+        author {
           id
           username
           email
@@ -417,7 +417,7 @@ export const onDeleteComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        user {
+        author {
           id
           username
           email

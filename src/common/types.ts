@@ -33,3 +33,12 @@ export type AuthState = {
   user?: User;
   error?: unknown;
 };
+
+/**
+ * Post
+ */
+export type Post = {
+  id: string;
+  tile: string;
+  author: User;
+};

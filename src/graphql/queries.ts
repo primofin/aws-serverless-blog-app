@@ -112,7 +112,7 @@ export const getPost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      author {
         id
         username
         email
@@ -161,7 +161,7 @@ export const listPosts = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        user {
+        author {
           id
           username
           email
@@ -203,7 +203,7 @@ export const getComment = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        user {
+        author {
           id
           username
           email
