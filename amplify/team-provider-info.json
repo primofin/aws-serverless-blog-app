@@ -21,6 +21,10 @@
         "S3Trigger6756fe9d": {
           "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
           "s3Key": "amplify-builds/S3Trigger6756fe9d-4c64774c706b75396869-build.zip"
+        },
+        "callingDynamoDblambda": {
+          "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
+          "s3Key": "amplify-builds/callingDynamoDblambda-55425347737978564a77-build.zip"
         }
       }
     }
