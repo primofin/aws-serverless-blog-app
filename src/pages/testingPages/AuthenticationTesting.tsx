@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Amplify } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import awsExports from '../../aws-exports';
 import '@aws-amplify/ui-react/styles.css';
 import { Authenticator } from '@aws-amplify/ui-react';
@@ -15,6 +15,13 @@ function AuthenticationTesting() {
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: RootState) => state.auth);
 
+  async function updateUser() {
+    const user = await Auth.currentAuthenticatedUser();
+    await Auth.updateUserAttributes(user, {
+      given_name: 'vanilla',
+    });
+  }
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
@@ -24,6 +31,8 @@ function AuthenticationTesting() {
         {user && <h2>Welcome {user.username} to the homepage!</h2>}
         <p>You can do this, I believe in you.</p>
       </main>
+
+      <button onClick={updateUser}>update</button>
       <nav>
         <Link to="/about">About</Link>
       </nav>

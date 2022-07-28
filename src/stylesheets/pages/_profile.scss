@@ -1,0 +1,28 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+
+  &__content-wrapper {
+    width: 60vw;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: $medium-gap;
+  }
+  &__bio-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: $medium-gap;
+    gap: $small-gap;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $medium-gap;
+  }
+
+  &__work {
+    flex-direction: column;
+    gap: $small-gap;
+  }
+}
