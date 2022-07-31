@@ -66,8 +66,8 @@ const Header = ({ hasSubHeading = true }: HeaderProps) => {
             }}
           >
             <div className="header__popover">
-              <Link to={user.username}>{user.username}</Link>
-              <Link to="new">Create Post</Link>
+              <Link to={`/${user.username}`}>{user.username}</Link>
+              <Link to="/new">Create Post</Link>
               <Button variant="text" onClick={handleSignOutBtnClick}>
                 Sign out
               </Button>

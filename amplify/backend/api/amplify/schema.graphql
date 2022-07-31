@@ -28,6 +28,7 @@ type Blog @model {
 type Post @model {
   id: ID!
   title: String!
+  content: String
   blog: Blog @belongsTo
   author: User @belongsTo
   comments: [Comment] @hasMany
