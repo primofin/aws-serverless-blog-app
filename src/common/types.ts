@@ -14,19 +14,6 @@ export type User = {
   bioIntro?: string;
 };
 
-export type UserAtrributes = {
-  id: string;
-  given_name?: string;
-  family_name?: string;
-  gender?: string;
-  email: string;
-  address?: string;
-  phone_number?: string;
-  website?: string;
-  locale?: string;
-  picture?: string;
-};
-
 export type AuthState = {
   isLoading: boolean | null;
   isLoggedIn: boolean;
@@ -39,6 +26,13 @@ export type AuthState = {
  */
 export type Post = {
   id: string;
-  tile: string;
+  title: string;
+  content?: string;
   author: User;
+};
+
+export type PostState = {
+  isLoading: boolean | null;
+  posts: Post[];
+  error?: unknown;
 };
