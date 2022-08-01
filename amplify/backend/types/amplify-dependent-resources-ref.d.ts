@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "amplify186a990e": {
+        "amplifyabff9dc9": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -12,6 +12,12 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "function": {
         "S3Trigger6756fe9d": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "callingDynamoDblambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",

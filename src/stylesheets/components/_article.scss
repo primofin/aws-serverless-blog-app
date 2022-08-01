@@ -1,8 +1,9 @@
 .article {
   background-color: white;
-  border-radius: 4px;
+  border-radius: $radius;
   max-height: 600px;
   max-width: 520px;
+  overflow: hidden;
 
   &__cover {
     img {
