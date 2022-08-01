@@ -142,6 +142,7 @@ export const getPost = /* GraphQL */ `
         }
         nextToken
       }
+      content
       createdAt
       updatedAt
       userPostsId

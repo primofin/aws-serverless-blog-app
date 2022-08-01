@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 type HeadingLinkProps = {
   text: string;
   link: string;
@@ -5,9 +7,9 @@ type HeadingLinkProps = {
 
 const HeadingLink = ({ text, link }: HeadingLinkProps) => {
   return (
-    <a href={link} className="heading-link">
+    <Link to={link} className="heading-link">
       {text}
-    </a>
+    </Link>
   );
 };
 

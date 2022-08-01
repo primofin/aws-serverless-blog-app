@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../redux/store';
 
-import Article from '../components/Article';
+// import Article from '../components/Article';
 import Header from '../components/Header';
 import { useParams } from 'react-router-dom';
 
@@ -34,8 +34,8 @@ const Profile = () => {
           </div>
         </div>
         <div className="profile__work flex-center">
-          <Article></Article>
-          <Article></Article>
+          {/* <Article></Article>
+          <Article></Article> */}
         </div>
       </div>
     </div>

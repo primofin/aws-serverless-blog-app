@@ -24,7 +24,7 @@
         },
         "callingDynamoDblambda": {
           "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
-          "s3Key": "amplify-builds/callingDynamoDblambda-55425347737978564a77-build.zip"
+          "s3Key": "amplify-builds/callingDynamoDblambda-556b6756745874444779-build.zip"
         }
       }
     }

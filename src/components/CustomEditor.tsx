@@ -20,6 +20,11 @@ type CustomEditorState = {
   editorContentHtml?: string;
 };
 
+type CustomEditorProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleContentChange: any;
+};
+
 function keyBindingFunction(event: React.KeyboardEvent<HTMLElement>): string | null {
   if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 'x') {
     return 'strikethrough';
@@ -40,7 +45,7 @@ function keyBindingFunction(event: React.KeyboardEvent<HTMLElement>): string | n
   return getDefaultKeyBinding(event);
 }
 
-const CustomEditor = () => {
+const CustomEditor = ({ handleContentChange }: CustomEditorProps) => {
   const [state, setState] = useState<CustomEditorState>({
     editorState: EditorState.createEmpty(),
   });
@@ -52,6 +57,7 @@ const CustomEditor = () => {
       editorState,
       editorContentHtml: stateToHTML(contentState),
     });
+    handleContentChange(JSON.stringify(convertToRaw(contentState)));
   };
 
   const handleKeyCommand = (command: string) => {

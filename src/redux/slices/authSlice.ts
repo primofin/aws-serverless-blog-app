@@ -35,7 +35,6 @@ function createExtraActions() {
       const data = await Auth.currentAuthenticatedUser({
         bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
       });
-      console.log('data', data);
       const {
         email,
         sub,
@@ -62,7 +61,6 @@ function createExtraActions() {
         website,
         locale,
       } as User;
-      console.log('user', user);
       return user;
     });
   }
@@ -91,7 +89,6 @@ function createExtraReducers() {
         state.isLoggedIn = true;
       },
       [rejected as any]: (state: AuthState, action: any) => {
-        console.log('Error', action.error);
         state.error = { error: action.error };
       },
     };
@@ -109,7 +106,7 @@ function createExtraReducers() {
         state.user = undefined;
       },
       [rejected as any]: (state: AuthState, action: any) => {
-        console.log('Error', action.error);
+        console.log('Sign out Error', action.error);
         state.error = { error: action.error };
       },
     };
