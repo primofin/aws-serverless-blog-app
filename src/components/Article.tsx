@@ -1,7 +1,5 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { RootState } from '../redux/store';
 import Button from './Button';
 import HeadingLink from './HeadingLink';
 
@@ -9,11 +7,11 @@ type ArticleProps = {
   // imgSrc: string;
   title: string;
   postId: string;
+  author: string;
 };
 
-const Article = ({ title, postId }: ArticleProps) => {
-  const { user } = useSelector((state: RootState) => state.auth);
-  const url = '/' + user?.username + '/' + postId;
+const Article = ({ title, postId, author }: ArticleProps) => {
+  const url = '/' + author + '/' + postId;
   return (
     <div className="article">
       <div className="article__cover">

@@ -15,7 +15,9 @@ const Newsfeed = () => {
   return (
     <div className="news-feed">
       {posts.length !== 0 &&
-        posts.map(({ id, title }) => <Article key={id} title={title} postId={id}></Article>)}
+        posts.map(({ id, title, author }) => (
+          <Article key={id} title={title} postId={id} author={author.username}></Article>
+        ))}
     </div>
   );
 };
