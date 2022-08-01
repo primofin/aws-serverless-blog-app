@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button/link components.
+// -----------------------------------------------------------------------------
+
+/* ButtonLink
+   ========================================================================== */
+.button-link {
+  padding: 0.6rem 1rem;
+  border: 1px solid $dark-grey;
+  border-radius: $radius;
+
+  &:hover {
+    background-color: $text-color;
+    color: white;
+  }
+
+  &__secondary {
+    border-color: $mid-grey;
+    color: $dark-grey;
+  }
+  &__secondary:hover {
+    background-color: $mid-grey;
+    color: white;
+  }
+}
+
+/* Button
+   ========================================================================== */
+.button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: $radius;
+  background-color: $light-grey;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $dark-grey;
+    color: white;
+  }
+
+  &__secondary {
+    border: 1px solid $dark-grey;
+    background-color: white;
+  }
+}
+
+/* Rounded button 
+   ========================================================================== */
+.rounded-button {
+  border: 1px solid $light-grey;
+  border-radius: 50%;
+  padding: 0;
+  box-sizing: content-box;
+  width: 40px;
+  height: 40px;
+  
+  img {
+   width: 40px;
+   height: 40px;
+  }
+}
+
+/* HeadingLink
+   ========================================================================== */
+.heading-link {
+  font-weight: bold;
+  font-size: 1em;
+  margin: 1rem 0;
+  color: $text-color;
+}

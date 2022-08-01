@@ -1,0 +1,18 @@
+{
+  "resourceName": "thesismedia2022",
+  "policyUUID": "47e3f502",
+  "bucketName": "graduation-project-media",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger6756fe9d",
+  "groupAccess": {}
+}

@@ -1,0 +1,23 @@
+.article {
+  background-color: white;
+  border-radius: $radius;
+  max-height: 600px;
+  max-width: 520px;
+  overflow: hidden;
+
+  &__cover {
+    img {
+      height: 180px;
+      width: 100%;
+    }
+  }
+
+  &__body {
+    margin: 1rem;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

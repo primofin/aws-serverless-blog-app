@@ -1,8 +1,21 @@
-import React from "react";
-import "./App.css";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from './redux/slices/authSlice';
+import { AppDispatch } from './redux/store';
+import AppRouter from './Routes';
 
 function App() {
-  return <div></div>;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
+
+  return (
+    <>
+      <AppRouter />
+    </>
+  );
 }
 
 export default App;

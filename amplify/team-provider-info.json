@@ -10,6 +10,23 @@
       "StackName": "amplify-amplify-dev-13221",
       "StackId": "arn:aws:cloudformation:eu-north-1:757657634318:stack/amplify-amplify-dev-13221/573bae30-fcb2-11ec-b412-0adc4869d052",
       "AmplifyAppId": "d3vuzd77d1msxv"
+    },
+    "categories": {
+      "auth": {
+        "amplify186a990e": {},
+        "true": {},
+        "amplifyabff9dc9": {}
+      },
+      "function": {
+        "S3Trigger6756fe9d": {
+          "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
+          "s3Key": "amplify-builds/S3Trigger6756fe9d-4c64774c706b75396869-build.zip"
+        },
+        "callingDynamoDblambda": {
+          "deploymentBucketName": "amplify-amplify-dev-13221-deployment",
+          "s3Key": "amplify-builds/callingDynamoDblambda-556b6756745874444779-build.zip"
+        }
+      }
     }
   }
 }
