@@ -21,9 +21,7 @@ const PostFactory = () => {
       content: '',
     },
     onSubmit: (values: Values) => {
-      // alert(JSON.stringify(values, null, 2));
       if (!user) return;
-      console.log('form values', { ...values, userPostsId: user.id });
       dispatch(addNewPost({ ...values, userPostsId: user.id }));
     },
   });

@@ -16,6 +16,14 @@ const AppRouter = () => (
     <Route path="/authentication-test" element={<AuthenticationTesting />} />
     <Route path="/new" element={<PostFactory />} />
     <Route path="/api-test" element={<TestingAPI />} />
+    <Route
+      path="*"
+      element={
+        <main style={{ padding: '1rem' }}>
+          <p>Theres nothing here!</p>
+        </main>
+      }
+    />
     {/* <Route path="/editor" element={<Editor />} /> */}
   </Routes>
 );

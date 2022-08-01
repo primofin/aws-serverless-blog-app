@@ -34,5 +34,6 @@ export type Post = {
 export type PostState = {
   isLoading: boolean | null;
   posts: Post[];
+  selectedPost?: Post;
   error?: unknown;
 };

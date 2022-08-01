@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { API, graphqlOperation } from 'aws-amplify';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { listPosts } from '../../graphql/queries';
+import { getPost, listPosts } from '../../graphql/queries';
 import { Post, PostState } from '../../common/types';
 import { createPost } from '../../graphql/mutations';
 
@@ -12,8 +12,9 @@ export const postSlice = createSlice({
   initialState: {
     isLoading: null,
     posts: [],
+    selectedPost: undefined,
     error: undefined,
-  },
+  } as PostState,
   reducers: {},
   extraReducers: createExtraReducers(),
 });
@@ -22,6 +23,7 @@ function createExtraActions() {
   return {
     getAllPosts: getAllPosts(),
     addNewPost: addNewPost(),
+    getPostById: getPostById(),
   };
 
   function getAllPosts() {
@@ -31,6 +33,14 @@ function createExtraActions() {
       console.log('posts', data.listPosts.items);
 
       return posts;
+    });
+  }
+
+  function getPostById() {
+    return createAsyncThunk<Post, string>(`posts/getPostById`, async (id) => {
+      const { data } = (await API.graphql(graphqlOperation(getPost, { id }))) as any;
+      const post = data.getPost as Post;
+      return post;
     });
   }
 
@@ -51,6 +61,7 @@ function createExtraActions() {
 function createExtraReducers() {
   return {
     ...getAllPosts(),
+    ...getPostById(),
     ...createPost(),
   };
 
@@ -87,8 +98,25 @@ function createExtraReducers() {
       },
     };
   }
+
+  function getPostById() {
+    const { pending, fulfilled, rejected } = extraActions.getPostById;
+    return {
+      [pending as any]: (state: PostState) => {
+        state.isLoading = true;
+      },
+      [fulfilled as any]: (state: PostState, action: PayloadAction<Post>) => {
+        state.selectedPost = action.payload;
+        state.isLoading = false;
+      },
+      [rejected as any]: (state: PostState, action: any) => {
+        console.log('getPostById Error', action.error);
+        state.error = { error: action.error };
+      },
+    };
+  }
 }
 
-export const { getAllPosts, addNewPost } = extraActions;
+export const { getAllPosts, addNewPost, getPostById } = extraActions;
 
 export default postSlice.reducer;
