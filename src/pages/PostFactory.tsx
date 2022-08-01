@@ -1,42 +1,51 @@
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { AppDispatch, RootState } from '../redux/store';
+
 import CustomEditor from '../components/CustomEditor';
+import { addNewPost } from '../redux/slices/postSlice';
 
 interface Values {
-  firstName: string;
-  lastName: string;
-  email: string;
+  title: string;
+  content: string;
 }
 
 const PostFactory = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      content: '',
+    },
+    onSubmit: (values: Values) => {
+      // alert(JSON.stringify(values, null, 2));
+      if (!user) return;
+      console.log('form values', { ...values, userPostsId: user.id });
+      dispatch(addNewPost({ ...values, userPostsId: user.id }));
+    },
+  });
+
+  const handleEditorChange = (content: string) => {
+    formik.handleChange(content);
+    formik.values.content = content;
+  };
   return (
     <div>
-      <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-        }}
-        onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 500);
-        }}
-      >
-        <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="firstName" placeholder="John" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe" />
-
-          <label htmlFor="email">Email</label>
-          <Field id="email" name="email" placeholder="john@acme.com" type="email" />
-
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-      <CustomEditor />
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="title">Title</label>
+        <input
+          id="title"
+          name="title"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.title}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <CustomEditor handleContentChange={handleEditorChange} />
     </div>
   );
 };
