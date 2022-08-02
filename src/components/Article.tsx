@@ -4,16 +4,16 @@ import Button from './Button';
 import HeadingLink from './HeadingLink';
 
 type ArticleProps = {
-  // imgSrc: string;
+  coverImgLink?: string;
   title: string;
   postId: string;
-  author: string;
+  author?: string;
 };
 
 const Article = ({ title, postId, author }: ArticleProps) => {
   const url = '/' + author + '/' + postId;
   return (
-    <div className="article">
+    <div className="article" key={postId}>
       <div className="article__cover">
         <Link to={url}>
           <img src="https://via.placeholder.com/300.png/" alt="cover image"></img>

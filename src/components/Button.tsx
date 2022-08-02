@@ -1,9 +1,14 @@
 type ButtonProps = {
   text: string;
-  type?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
 };
-const Button = ({ text, type = 'primary' }: ButtonProps) => {
-  return <button className={`button button__${type}`}>{text}</button>;
+const Button = ({ text, variant = 'primary', type = 'button' }: ButtonProps) => {
+  return (
+    <button type={type} className={`button button__${variant}`}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;

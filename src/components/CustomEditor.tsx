@@ -6,7 +6,7 @@ import {
   getDefaultKeyBinding,
   KeyBindingUtil,
   convertToRaw,
-  ContentState,
+  // ContentState,
   convertFromRaw,
 } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
@@ -52,7 +52,7 @@ const CustomEditor = ({ handleContentChange }: CustomEditorProps) => {
 
   const onChange = (editorState: EditorState) => {
     const contentState = editorState.getCurrentContent();
-    saveContent(contentState);
+    // saveContent(contentState);
     setState({
       editorState,
       editorContentHtml: stateToHTML(contentState),
@@ -128,9 +128,9 @@ const CustomEditor = ({ handleContentChange }: CustomEditorProps) => {
     );
   };
 
-  const saveContent = (content: ContentState) => {
-    window.localStorage.setItem('content', JSON.stringify(convertToRaw(content)));
-  };
+  // const saveContent = (content: ContentState) => {
+  //   window.localStorage.setItem('content', JSON.stringify(convertToRaw(content)));
+  // };
 
   useEffect(() => {
     const content = window.localStorage.getItem('content');

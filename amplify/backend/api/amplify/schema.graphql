@@ -29,6 +29,7 @@ type Post @model {
   id: ID!
   title: String!
   content: String
+  coverImgLink: String
   blog: Blog @belongsTo
   author: User @belongsTo
   comments: [Comment] @hasMany

@@ -2,8 +2,13 @@
   background-color: white;
   border-radius: $radius;
   max-height: 600px;
+  width: 200px;
   max-width: 520px;
   overflow: hidden;
+
+  @include responsive(laptop) {
+    width: 400px;
+  }
 
   &__cover {
     img {
@@ -20,4 +25,5 @@
     display: flex;
     justify-content: flex-end;
   }
+
 }
