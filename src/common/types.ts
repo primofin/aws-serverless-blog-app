@@ -27,6 +27,7 @@ export type AuthState = {
 export type Post = {
   id: string;
   title: string;
+  coverImgLink: string;
   content?: string;
   author: User;
 };

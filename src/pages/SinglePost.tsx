@@ -34,8 +34,8 @@ function SinglePost() {
     <>
       {selectedPost && (
         <div>
-          <Header />
-          <div className="home-content">
+          <Header hasSubHeading={false} />
+          <div className="content-wrapper single-post__content">
             <LeftSidebar></LeftSidebar>
             <div>
               <h3>{selectedPost.title}</h3>

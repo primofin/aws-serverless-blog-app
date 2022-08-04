@@ -1,6 +1,11 @@
 .right-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
   &__tag-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding-left: 0;
   }
