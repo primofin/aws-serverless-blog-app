@@ -17,6 +17,7 @@ type User @model {
   locale: String
   occupation: String
   bioIntro: String
+  avaLink: String
 }
 
 type Blog @model {
