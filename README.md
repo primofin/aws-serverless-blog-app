@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Building a Serverless Full-Stack Blog Application Using AWS Amplify
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
