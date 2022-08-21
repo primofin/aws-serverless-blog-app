@@ -142,6 +142,7 @@ export const getPost = /* GraphQL */ `
         }
         nextToken
       }
+      coverImgLink
       content
       createdAt
       updatedAt
@@ -184,6 +185,7 @@ export const listPosts = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        coverImgLink
         userPostsId
         blogPostsId
       }

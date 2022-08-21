@@ -16,9 +16,17 @@ const Newsfeed = () => {
   return (
     <div className="news-feed">
       {posts.length !== 0 &&
-        posts.map(({ id, title, author }: Post) => {
+        posts.map(({ id, title, author, coverImgLink }: Post) => {
           if (!author) return <Article key={id} title={title} postId={id}></Article>;
-          return <Article key={id} title={title} postId={id} author={author.username}></Article>;
+          return (
+            <Article
+              key={id}
+              title={title}
+              postId={id}
+              author={author.username}
+              coverImgLink={coverImgLink}
+            ></Article>
+          );
         })}
     </div>
   );

@@ -10,13 +10,14 @@ type ArticleProps = {
   author?: string;
 };
 
-const Article = ({ title, postId, author }: ArticleProps) => {
+const Article = ({ title, postId, author, coverImgLink }: ArticleProps) => {
   const url = '/' + author + '/' + postId;
+  const imgSrc = coverImgLink || 'https://via.placeholder.com/300.png/';
   return (
     <div className="article" key={postId}>
       <div className="article__cover">
         <Link to={url}>
-          <img src="https://via.placeholder.com/300.png/" alt="cover image"></img>
+          <img src={imgSrc} alt="cover image"></img>
         </Link>
       </div>
       <div className="article__body">
