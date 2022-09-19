@@ -47,7 +47,8 @@ const Header = ({ hasSubHeading = true }: HeaderProps) => {
 
   const renderAuthButtons = () => {
     if (user) {
-      const imgSrc = user.picture ?? 'https://via.placeholder.com/40.png/';
+      const imgSrc =
+        user.picture ?? 'https://vy-documents.s3.eu-central-1.amazonaws.com/vy_nguyen_photo.jpeg';
       return (
         <>
           <button aria-describedby={id} onClick={handleClick} className="rounded-button">
@@ -79,10 +80,10 @@ const Header = ({ hasSubHeading = true }: HeaderProps) => {
     return (
       <ul>
         <li>
-          <Link to="authentication-test">Log in</Link>
+          <Link to="authentication">Log in</Link>
         </li>
         <li>
-          <ButtonLink link="authentication-test" text="Create account"></ButtonLink>
+          <ButtonLink link="authentication" text="Create account"></ButtonLink>
         </li>
       </ul>
     );

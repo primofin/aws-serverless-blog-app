@@ -13,7 +13,7 @@ const AppRouter = () => (
     <Route path="/" element={<Home />} />
     <Route path="/:username" element={<Profile />} />
     <Route path="/:username/:postId" element={<SinglePost />} />
-    <Route path="/authentication-test" element={<AuthenticationTesting />} />
+    <Route path="/authentication" element={<AuthenticationTesting />} />
     <Route path="/new" element={<PostFactory />} />
     <Route path="/api-test" element={<TestingAPI />} />
     <Route

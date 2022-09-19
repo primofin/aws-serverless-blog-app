@@ -27,11 +27,7 @@ function AuthenticationTesting() {
   }, []);
   return (
     <Authenticator>
-      <main>
-        {user && <h2>Welcome {user.username} to the homepage!</h2>}
-        <p>You can do this, I believe in you.</p>
-      </main>
-
+      <main>{user && <h2>Welcome {user.username} to the homepage!</h2>}</main>
       <button onClick={updateUser}>update</button>
       <nav>
         <Link to="/about">About</Link>
