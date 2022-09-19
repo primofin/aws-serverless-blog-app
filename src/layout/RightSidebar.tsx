@@ -10,10 +10,10 @@ const RightSidebar = () => {
             <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
           </li>
           <li className="right-sidebar__tag">
-            <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
+            <ButtonLink link="#" text="Serverless" type="secondary"></ButtonLink>
           </li>
           <li className="right-sidebar__tag">
-            <ButtonLink link="#" text="Javascript" type="secondary"></ButtonLink>
+            <ButtonLink link="#" text="AWS architecture" type="secondary"></ButtonLink>
           </li>
         </ul>
       </div>

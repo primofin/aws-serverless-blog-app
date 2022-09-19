@@ -4,22 +4,29 @@ import { RootState } from '../redux/store';
 
 // import Article from '../components/Article';
 import Header from '../components/Header';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useSelector((state: RootState) => state.auth);
-  const params = useParams();
+  // const params = useParams();
 
-  console.log('params', params.username);
+  console.log('user', user);
 
-  const imgSrc = user?.picture ?? 'https://via.placeholder.com/140.png/';
+  const imgSrc =
+    user?.picture ?? 'https://vy-documents.s3.eu-central-1.amazonaws.com/vy_nguyen_photo.jpeg';
+
   return (
     <div className="profile flex-center">
       <Header hasSubHeading={false} />
       <div className="profile__content-wrapper flex-center">
         <div className="profile__bio-wrapper">
           <div className="profile__header">
-            <img src={imgSrc} alt="cover image" className="rounded"></img>
+            <img
+              src={imgSrc}
+              alt="cover image"
+              className="rounded"
+              style={{ width: '140px', height: '140px' }}
+            ></img>
             <h3>{user?.username}</h3>
           </div>
 

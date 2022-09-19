@@ -15,8 +15,6 @@ function SinglePost() {
   const { postId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const { selectedPost } = useSelector((state: RootState) => state.post);
-  console.log('postId', postId);
-  console.log('selectedPost', selectedPost);
 
   const getContent = () => {
     if (!selectedPost) return '';
@@ -39,6 +37,11 @@ function SinglePost() {
             <LeftSidebar></LeftSidebar>
             <div>
               <h3>{selectedPost.title}</h3>
+              <img
+                src={selectedPost.coverImgLink}
+                alt="cover image"
+                className="single-post__cover-img"
+              ></img>
               {getContent()}
             </div>
             <RightSidebar></RightSidebar>

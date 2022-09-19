@@ -1,3 +1,12 @@
+/**
+ *
+ * Metropolia University of Applied Sciences
+ * Vy Nguyen Thanh 20 August 2022
+ * Final Year Project: Building a Serverless Full-Stack Blog Application Using AWS Amplify
+ * CustomEditor
+ *
+ */
+
 import { useEffect, useState } from 'react';
 import {
   Editor,
@@ -164,9 +173,6 @@ const CustomEditor = ({ handleContentChange }: CustomEditorProps) => {
           keyBindingFn={keyBindingFunction}
         />
       </div>
-      {/* <h4>Editor content as HTML</h4>
-      <pre>{state.editorContentHtml}</pre>
-      {state.editorContentHtml && parse(state.editorContentHtml)} */}
     </div>
   );
 };
